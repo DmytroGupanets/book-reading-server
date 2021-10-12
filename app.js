@@ -7,7 +7,7 @@ const { sendResponse } = require("./helpers");
 const authRouter = require("./routes/api/auth");
 // const usersRouter = require("./routes/api/users");
 
-const { DB_HOST, PORT = 3000 } = process.env;
+const { DB_HOST, PORT = 5000 } = process.env;
 
 mongoose
   .connect(DB_HOST, {
