@@ -1,12 +1,10 @@
-const exspress = require("exspress");
-const router = exspress();
+const express = require("express");
+const router = express.Router();
 const { controllerWrapper, validation } = require("../../middlewares");
 const { targets: ctrl } = require("../../controllers");
 
-router.get("/", controllerWrapper(ctrl.getAllTargets));
-
 router.post("/", controllerWrapper(ctrl.addTargets));
 
-router.patch("/targetId", controllerWrapper(ctrl.updateTargets));
+router.patch("/records/:targetId", controllerWrapper(ctrl.updateRecords));
 
 module.exports = router;

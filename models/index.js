@@ -2,8 +2,8 @@ const { User } = require("./user");
 const { joiUserSchema } = require("./user");
 const { joiUserVerificationRequestSchema } = require("./user");
 
-const { Target } = require("./tsrget");
-const { joiTargetShema } = require("./tsrget");
+const { Target } = require("./target");
+const { joiTargetShema } = require("./target");
 
 module.exports = {
   User,

@@ -6,6 +6,7 @@ require("dotenv").config();
 const { sendResponse } = require("./helpers");
 const authRouter = require("./routes/api/auth");
 const usersRouter = require("./routes/api/users");
+const targetsRouter = require("./routes/api/targets");
 
 const { DB_HOST, PORT = 5000 } = process.env;
 
