@@ -35,6 +35,7 @@ app.use(express.json());
 
 app.use("/api/auth", authRouter);
 app.use("/api/users", usersRouter);
+app.use("/api/targets", targetsRouter);
 
 app.use((req, res) => {
   sendResponse({
