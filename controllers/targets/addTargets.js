@@ -6,7 +6,7 @@ const addTargets = async (req, res) => {
 
   const result = await Target.create(newTarget);
 
-  sendResponse({ res, data: { result } });
+  sendResponse({ res, statusMessage: "Success", data: { result } });
 };
 
 module.exports = addTargets;

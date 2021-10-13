@@ -6,6 +6,8 @@ const { targets: ctrl } = require("../../controllers");
 
 router.post("/", controllerWrapper(ctrl.addTargets));
 
+router.get("/records/:targetId", controllerWrapper(ctrl.getTargetById));
+
 router.patch(
   "/records/:targetId",
   validation(joiRecordSchema),
