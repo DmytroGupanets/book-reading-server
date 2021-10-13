@@ -5,7 +5,7 @@ const mongoose = require("mongoose");
 require("dotenv").config();
 const { sendResponse } = require("./helpers");
 const authRouter = require("./routes/api/auth");
-// const usersRouter = require("./routes/api/users");
+const usersRouter = require("./routes/api/users");
 
 const { DB_HOST, PORT = 5000 } = process.env;
 
@@ -34,7 +34,7 @@ app.use(cors());
 app.use(express.json());
 
 app.use("/api/auth", authRouter);
-// app.use("/api/users", usersRouter);
+app.use("/api/users", usersRouter);
 
 app.use((req, res) => {
   sendResponse({
