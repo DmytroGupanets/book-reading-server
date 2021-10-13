@@ -6,8 +6,8 @@ const targetShema = Schema(
     startDate: { type: String, required: [true] },
     endDate: { type: String, required: [true] },
     ownerId: { type: Schema.Types.ObjectId, ref: "user" },
-    books: { type: Array },
-    records: { type: Array },
+    books: { type: String },
+    records: { type: String },
   },
   { versionKey: false, timestamps: true }
 );
