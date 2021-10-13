@@ -1,3 +1,3 @@
-const userGetById = require("./userGetById");
+const getById = require("./getById");
 
-module.exports = { userGetById };
+module.exports = { getById };
