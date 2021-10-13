@@ -1,14 +1,13 @@
 const express = require("express");
+const router = express.Router();
 const { users: ctrl } = require("../../controllers");
 const {
   controllerWrapper,
-  // validation,
+  validation,
   // authnticate,
 } = require("../../middlewares");
-// const { joiUserschema } = require("../../module/");
+const { joiUserSchema } = require("../../models");
 
-const router = express.Router();
-
-router.get("/:id", controllerWrapper(ctrl.userGetById));
+router.get("/:id", controllerWrapper(ctrl.getById));
 
 module.exports = router;
