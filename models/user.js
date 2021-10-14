@@ -29,7 +29,7 @@ const userSchema = Schema(
     name: {
       type: String,
       required: [true, "Name is required"],
-      minLength: 6,
+      minLength: 2,
     },
     token: {
       type: String,
