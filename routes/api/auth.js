@@ -4,7 +4,7 @@ const { auth: ctrl } = require("../../controllers");
 const {
   controllerWrapper,
   validation,
-  //   authenticate,
+  authenticate,
 } = require("../../middlewares");
 const { joiUserSchema } = require("../../models");
 
@@ -16,6 +16,6 @@ router.post(
 
 router.post("/login", controllerWrapper(ctrl.login));
 
-// router.get("/logout", authenticate, controllerWrapper(ctrl.signout));
+router.get("/logout", authenticate, controllerWrapper(ctrl.logout));
 
 module.exports = router;
