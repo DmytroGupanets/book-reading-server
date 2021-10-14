@@ -1,8 +1,8 @@
-const { User } = require("../../models/user");
+const { User } = require("../../models");
 const { sendResponse } = require("../../helpers");
 
 const signup = async (req, res) => {
-  const { email, password } = req.body;
+  const { email, password, name } = req.body;
   const result = await User.findOne({ email });
   if (result) {
     sendResponse({
@@ -14,8 +14,9 @@ const signup = async (req, res) => {
     return;
   }
 
-  const newUser = new User({ email });
+  const newUser = new User({ email, name });
   newUser.setPassword(password);
+  newUser.setVerifyToken();
   await newUser.save();
 
   sendResponse({
@@ -24,6 +25,7 @@ const signup = async (req, res) => {
     data: {
       user: {
         email: newUser.email,
+        name: newUser.name,
       },
     },
   });

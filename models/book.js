@@ -29,12 +29,13 @@ const bookSchema = Schema(
     author: {
       type: String,
       required: [true, "Set author for book"],
-      minLength: 5,
+      minLength: 2,
     },
     year: {
       type: Number,
       required: [true, "Set year for book"],
       minLength: 4,
+      maxLength: 4,
     },
     pages: {
       type: Number,
