@@ -6,6 +6,11 @@ const { Target } = require("./target");
 const { joiTargetSchema } = require("./target");
 const { joiRecordSchema } = require("./target");
 
+const { Book } = require("./book");
+const { joiBookSchema } = require("./book");
+const { joiBookUpdateStatusSchema } = require("./book");
+const { joiBookAddResumeSchema } = require("./book");
+
 module.exports = {
   User,
   joiUserSchema,
@@ -13,4 +18,8 @@ module.exports = {
   Target,
   joiTargetSchema,
   joiRecordSchema,
+  Book,
+  joiBookSchema,
+  joiBookUpdateStatusSchema,
+  joiBookAddResumeSchema,
 };
