@@ -3,16 +3,16 @@ const router = express.Router();
 const { auth: ctrl } = require("../../controllers");
 const {
   controllerWrapper,
-  //   validation,
+  validation,
   //   authenticate,
 } = require("../../middlewares");
-// const { joiUserSchema } = require("../../models");
+const { joiUserSchema } = require("../../models");
 
-// router.post(
-//   "/register",
-//   validation(joiUserSchema),
-//   controllerWrapper(ctrl.signup)
-// );
+router.post(
+  "/register",
+  validation(joiUserSchema),
+  controllerWrapper(ctrl.signup)
+);
 
 router.post("/login", controllerWrapper(ctrl.login));
 
