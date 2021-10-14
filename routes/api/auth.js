@@ -16,6 +16,6 @@ const {
 
 router.post("/login", controllerWrapper(ctrl.login));
 
-// router.post("/logout", authenticate, controllerWrapper(ctrl.signout));
+// router.get("/logout", authenticate, controllerWrapper(ctrl.signout));
 
 module.exports = router;
