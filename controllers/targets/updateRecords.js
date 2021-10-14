@@ -2,10 +2,10 @@ const { Target } = require("../../models");
 const { sendResponse } = require("../../helpers");
 
 const updateRecords = async (req, res) => {
-  const { targetId } = req.params;
+  const { id } = req.params;
 
   const result = await Target.findByIdAndUpdate(
-    targetId,
+    id,
     { $push: { records: req.body } },
     { new: true }
   );
@@ -15,7 +15,7 @@ const updateRecords = async (req, res) => {
       res,
       status: 404,
       statusMessage: "Not found",
-      statusMessage: `Target with id=${targetId} not found `,
+      statusMessage: `Target with id=${id} not found `,
     });
   }
   sendResponse({ res, statusMessage: "Success", data: { result } });

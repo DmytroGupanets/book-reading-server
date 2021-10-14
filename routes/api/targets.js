@@ -1,15 +1,19 @@
 const express = require("express");
 const router = express.Router();
-const { joiRecordSchema } = require("../../models");
+const { joiRecordSchema, joiTargetSchema } = require("../../models");
 const { controllerWrapper, validation } = require("../../middlewares");
 const { targets: ctrl } = require("../../controllers");
 
-router.post("/", controllerWrapper(ctrl.addTargets));
+router.post(
+  "/",
+  validation(joiTargetSchema),
+  controllerWrapper(ctrl.addTargets)
+);
 
-router.get("/records/:targetId", controllerWrapper(ctrl.getTargetById));
+router.get("/records/:id", controllerWrapper(ctrl.getTargetById));
 
 router.patch(
-  "/records/:targetId",
+  "/records/:id",
   validation(joiRecordSchema),
   controllerWrapper(ctrl.updateRecords)
 );
