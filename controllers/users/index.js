@@ -1,3 +1,9 @@
 const getById = require("./getById");
+const verify = require("./verify");
+const repeatVerify = require("./repeatVerify");
 
-module.exports = { getById };
+module.exports = {
+  getById,
+  verify,
+  repeatVerify,
+};
