@@ -1,11 +1,10 @@
-const { sendResponse } = require("../../helpers");
-const { validationById } = require("../../helpers");
+const { sendResponse, validationById } = require("../../helpers");
 const { User } = require("../../models");
 
 const userGetById = async (req, res) => {
   const { id } = req.params;
 
-  validationById(id);
+  validationById({ id, res });
   const result = await User.findById(id);
   sendResponse({
     res,
