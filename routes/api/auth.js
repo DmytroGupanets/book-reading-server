@@ -14,6 +14,8 @@ router.post(
   controllerWrapper(ctrl.signup)
 );
 
+router.post("/google", controllerWrapper(ctrl.google));
+
 router.post("/login", controllerWrapper(ctrl.login));
 
 router.get("/logout", authenticate, controllerWrapper(ctrl.logout));
