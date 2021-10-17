@@ -23,7 +23,7 @@ const userSchema = Schema(
     },
     password: {
       type: String,
-      required: [true, "Password is required"],
+      // required: [true, "Password is required"],
       minLength: 6,
     },
     name: {
@@ -42,7 +42,7 @@ const userSchema = Schema(
     },
     verifyToken: {
       type: String,
-      required: [true, "Verify token is required"],
+      // required: [true, "Verify token is required"],
     },
   },
   { versionKey: false, timestamps: true }
