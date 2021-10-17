@@ -6,4 +6,4 @@
 
 ![img](http://joxi.ru/KAxkgjLTvj0782.jpg)
 
-## [Репозиторій бекенда](https://github.com/DmytroGupanets/book-reading-client)
+## [Фронтенд репозиторій](https://github.com/DmytroGupanets/book-reading-client)
