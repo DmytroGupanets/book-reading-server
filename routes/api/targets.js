@@ -15,7 +15,7 @@ router.post(
   controllerWrapper(ctrl.addTargets)
 );
 
-router.get("/records/:id", authenticate, controllerWrapper(ctrl.getTargetById));
+router.get("/:id", authenticate, controllerWrapper(ctrl.getTargetById));
 
 router.patch(
   "/records/:id",
