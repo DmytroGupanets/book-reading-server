@@ -6,7 +6,7 @@ const addResumeById = async (req, res) => {
   const { resume } = req.body;
 
   if (!resume) {
-    sendResponse({
+    return sendResponse({
       res,
       status: 400,
       statusMessage: "Bad Request",
@@ -19,7 +19,7 @@ const addResumeById = async (req, res) => {
   const book = await Book.findById(id);
 
   if (book.status !== "completed") {
-    sendResponse({
+    return sendResponse({
       res,
       status: 400,
       statusMessage: "Bad Request",
