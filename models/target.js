@@ -27,7 +27,7 @@ const joiTargetSchema = Joi.object({
 const joiRecordSchema = Joi.object({
   date: Joi.string().required(),
   time: Joi.string().required(),
-  pages: Joi.array().min(1).max(3).required(),
+  pages: Joi.string().min(1).max(3).required(),
 });
 
 const Target = model("target", targetSchema);
