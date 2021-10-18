@@ -28,7 +28,12 @@ const login = async (req, res) => {
     statusMessage: "Login success",
     data: {
       token,
-      user: { email: user.email, subscription: user.subscription },
+      user: {
+        email: user.email,
+        name: user.name,
+        isVerified: user.isVerified,
+        id: user._id,
+      },
     },
   });
 };
