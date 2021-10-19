@@ -41,7 +41,7 @@ app.use("/api/targets", targetsRouter);
 app.use("/api/books", booksRouter);
 
 app.use((req, res) => {
-  sendResponse({
+  return sendResponse({
     res,
     status: 404,
     statusMessage: "Not Found",
