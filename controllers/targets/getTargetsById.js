@@ -6,7 +6,7 @@ const getTargetById = async (req, res) => {
   const result = await Target.find({ owner: id });
 
   if (!result) {
-    sendResponse({
+    return sendResponse({
       res,
       status: 404,
       statusMessage: "Not found",

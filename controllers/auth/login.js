@@ -7,7 +7,7 @@ const login = async (req, res) => {
   const user = await User.findOne({ email });
 
   if (!user || !user.comparePassword(password) || !user.isVerified) {
-    sendResponse({
+    return sendResponse({
       res,
       status: 401,
       statusMessage: "Unauthorized",
