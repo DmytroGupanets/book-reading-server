@@ -3,7 +3,7 @@ const { sendResponse } = require("../../helpers");
 
 const updateRecords = async (req, res) => {
   const { id } = req.params;
-
+  //   console.log(req.params);
   const result = await Target.findByIdAndUpdate(
     id,
     { $push: { records: req.body } },
@@ -18,7 +18,7 @@ const updateRecords = async (req, res) => {
       statusMessage: `Target with id=${id} not found `,
     });
   }
-  sendResponse({ res, statusMessage: "Success", data: { result } });
+  sendResponse({ res, statusMessage: "Success", data: result.records });
 };
 
 module.exports = updateRecords;
