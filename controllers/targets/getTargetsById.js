@@ -4,7 +4,6 @@ const { sendResponse } = require("../../helpers");
 const getTargetById = async (req, res) => {
   const { id } = req.params;
   const result = await Target.findOne({ owner: id });
-
   if (!result) {
     return sendResponse({
       res,
