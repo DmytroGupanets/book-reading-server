@@ -17,6 +17,8 @@ router.post(
 
 router.get("/:id", authenticate, controllerWrapper(ctrl.getTargetById));
 
+router.get("/completed/:id", authenticate, controllerWrapper(ctrl.resetTask));
+
 router.patch(
   "/records/:id",
   authenticate,
