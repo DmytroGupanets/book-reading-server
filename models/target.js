@@ -6,6 +6,10 @@ const targetSchema = Schema(
     startDate: { type: String, required: [true, "StartDate is required"] },
     endDate: { type: String, required: [true, "EndDate is required"] },
     owner: { type: Schema.Types.ObjectId, ref: "user" },
+    isActive: {
+      type: Boolean,
+      default: false,
+    },
     books: [{ type: String }],
     records: [
       {
