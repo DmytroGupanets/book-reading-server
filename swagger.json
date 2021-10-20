@@ -20,7 +20,7 @@
   ],
   "servers": [
     {
-      "url": "https://kidslikev1.herokuapp.com"
+      "url": "https://books-reading.herokuapp.com"
     },
     {
       "url": "https://localhost:5000"
@@ -38,9 +38,31 @@
     {
       "name": "Books",
       "description": "Books endpoints"
+    },
+    {
+      "name": "Targets",
+      "description": "Targets endpoints"
     }
   ],
   "paths": {
+    "/api/auth/google": {
+      "get": {
+        "tags": [
+          "Auth"
+        ],
+        "summary": "Google authentication",
+        "responses": {
+          "200": {
+            "description": "Successful operation (redirect to front-end with token in query). Then use GET /user/info",
+            "content": {}
+          },
+          "403": {
+            "description": "Not registered or registered with postman",
+            "content": {}
+          }
+        }
+      }
+    },
     "/api/auth/register": {
       "post": {
         "tags": [
@@ -153,24 +175,6 @@
         }
       }
     },
-    "/api/auth/google": {
-      "get": {
-        "tags": [
-          "Auth"
-        ],
-        "summary": "Google authentication. WARNING: Works only for sign-in, after registered on front-end (if you're writing your back-end for a SPECIFIC front-end, then you can configure it right to work both for sign-up & sign-in)",
-        "responses": {
-          "200": {
-            "description": "Successful operation (redirect to front-end with token in query). Then use GET /user/info",
-            "content": {}
-          },
-          "403": {
-            "description": "Not registered or registered with postman",
-            "content": {}
-          }
-        }
-      }
-    },
     "/api/users/:id": {
       "get": {
         "tags": [
@@ -189,7 +193,45 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/AllInfo"
+                  "$ref": "#/components/schemas/UserGetById"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "No token provided",
+            "content": {}
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {}
+          },
+          "404": {
+            "description": "Invalid user / Invalid session",
+            "content": {}
+          }
+        }
+      }
+    },
+    "/api/users/current": {
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Get user info",
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserInfo"
                 }
               }
             }
@@ -340,6 +382,216 @@
           }
         }
       }
+    },
+    "/api/bоoks/": {
+      "post": {
+        "tags": [
+          "Books"
+        ],
+        "summary": "Add book",
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AddBook"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Books not found",
+            "content": {}
+          }
+        }
+      }
+    },
+    "/api/bоoks/status/:id": {
+      "patch": {
+        "tags": [
+          "Books"
+        ],
+        "summary": "Update status",
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UpdateStatusBook"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Missing status field",
+            "content": {}
+          },
+          "404": {
+            "description": "Book with id=${id} not found!",
+            "content": {}
+          }
+        }
+      }
+    },
+    "/api/bоoks/resume/:id": {
+      "put": {
+        "tags": [
+          "Books"
+        ],
+        "summary": "Add resume by id",
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AddResume"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Resume field is empty",
+            "content": {}
+          },
+          "404": {
+            "description": "Book  not found!",
+            "content": {}
+          }
+        }
+      }
+    },
+    "/api/targets/:id": {
+      "get": {
+        "tags": [
+          "Targets"
+        ],
+        "summary": "Get Target By Id",
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "success",
+            "content": {}
+          },
+          "404": {
+            "description": "Id  not found!",
+            "content": {}
+          }
+        }
+      }
+    },
+    "/api/targets/completed/:id": {
+      "get": {
+        "tags": [
+          "Targets"
+        ],
+        "summary": "Reset Task",
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Reset Task successfully",
+            "content": {}
+          },
+          "404": {
+            "description": "Id  not found!",
+            "content": {}
+          }
+        }
+      }
+    },
+    "/api/targets/": {
+      "post": {
+        "tags": [
+          "Targets"
+        ],
+        "summary": "Add targets",
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AddTargets"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "id is not correct",
+            "content": {}
+          },
+          "404": {
+            "description": "Target  not found!",
+            "content": {}
+          }
+        }
+      }
+    },
+    "/api/targets/records/:id": {
+      "patch": {
+        "tags": [
+          "Targets"
+        ],
+        "summary": "Update Records",
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Reset Task successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UpdateRecords"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Id  not found!",
+            "content": {}
+          }
+        }
+      }
     }
   },
   "components": {
@@ -406,24 +658,42 @@
           }
         }
       },
+      "UserGetById": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "user id"
+          },
+          "message": {
+            "type": "string",
+            "description": "Success"
+          },
+          "data": {
+            "type": "object",
+            "description": "data"
+          }
+        }
+      },
       "UserInfo": {
         "type": "object",
-        "user": {
-          "type": "object",
-          "properties": {
-            "email": {
-              "type": "string",
-              "description": "User's email",
-              "format": "email@mail.com"
-            },
-            "id": {
-              "description": "User's id",
-              "example": "507f1f77bcf86cd799439012"
-            },
-            "name": {
-              "type": "string",
-              "description": "User's name"
-            }
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "user id"
+          },
+          "name": {
+            "type": "string",
+            "description": "user name"
+          },
+          "isVerified": {
+            "type": "string",
+            "description": "status"
+          },
+          "email": {
+            "type": "string",
+            "description": "email",
+            "format": "email"
           }
         }
       },
@@ -434,7 +704,7 @@
             "type": "string",
             "description": "success"
           },
-          "data": {
+          "books": {
             "type": "object",
             "description": "Get All Books"
           }
@@ -471,7 +741,7 @@
             "description": "owner of this book"
           },
           "timestamps": {
-            "description": "owner of this book"
+            "description": "times when added this book"
           }
         }
       },
@@ -485,6 +755,63 @@
           "isVerified": {
             "type": "boolean",
             "description": "verify status"
+          }
+        }
+      },
+      "AddBook": {
+        "type": "object",
+        "properties": {
+          "bookName": {
+            "type": "string",
+            "description": "Name of book"
+          }
+        }
+      },
+      "UpdateStatusBook": {
+        "type": "object",
+        "properties": {
+          "book": {
+            "type": "string",
+            "description": "Name of book"
+          }
+        }
+      },
+      "AddResume": {
+        "type": "object",
+        "properties": {
+          "rating": {
+            "type": "number"
+          },
+          "text": {
+            "type": "string"
+          }
+        }
+      },
+      "AddTargets": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "multi": {
+            "type": "boolean"
+          }
+        }
+      },
+      "UpdateRecords": {
+        "type": "object",
+        "properties": {
+          "date": {
+            "type": "string"
+          },
+          "time": {
+            "type": "string"
+          },
+          "pages": {
+            "type": "string"
           }
         }
       }
