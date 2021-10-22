@@ -15,7 +15,6 @@ const login = async (req, res) => {
         message: "Email/password is wrong or user`s email is not verified",
       },
     });
-    return;
   }
 
   const token = user.createToken();
