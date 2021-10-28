@@ -4,7 +4,7 @@ const validation = (scheme) => {
   const func = (req, res, next) => {
     const { error } = scheme.validate(req.body);
     if (error) {
-      sendResponse({
+      return sendResponse({
         res,
         status: 400,
         statusMessage: "Bad request",
