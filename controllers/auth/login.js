@@ -7,7 +7,7 @@ const login = async (req, res) => {
   const user = await User.findOne({ email });
 
   if (!user || !user.comparePassword(password) || !user.isVerified) {
-    sendResponse({
+    return sendResponse({
       res,
       status: 401,
       statusMessage: "Unauthorized",
@@ -15,7 +15,6 @@ const login = async (req, res) => {
         message: "Email/password is wrong or user`s email is not verified",
       },
     });
-    return;
   }
 
   const token = user.createToken();
@@ -28,7 +27,12 @@ const login = async (req, res) => {
     statusMessage: "Login success",
     data: {
       token,
-      user: { email: user.email, subscription: user.subscription },
+      user: {
+        email: user.email,
+        name: user.name,
+        isVerified: user.isVerified,
+        id: user._id,
+      },
     },
   });
 };

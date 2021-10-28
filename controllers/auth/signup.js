@@ -22,13 +22,17 @@ const signup = async (req, res) => {
 
   const { verifyToken } = await User.create(newUser);
 
-  const data = {
-    to: email,
-    subject: "Email verification",
-    html: emailVerify(verifyToken, email),
-  };
+  try {
+    const data = {
+      to: email,
+      subject: "Email verification",
+      html: emailVerify(verifyToken, email),
+    };
 
-  await sendEmail(data);
+    await sendEmail(data);
+  } catch (error) {
+    console.log(error);
+  }
 
   sendResponse({
     res,

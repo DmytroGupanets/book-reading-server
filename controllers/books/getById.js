@@ -6,7 +6,7 @@ const getById = async (req, res) => {
   const book = await Book.findById(id);
 
   if (!book) {
-    sendResponse({
+    return sendResponse({
       res,
       status: 404,
       statusMessage: "Not Found",

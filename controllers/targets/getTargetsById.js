@@ -3,10 +3,9 @@ const { sendResponse } = require("../../helpers");
 
 const getTargetById = async (req, res) => {
   const { id } = req.params;
-  const result = await Target.find({ owner: id });
-
+  const result = await Target.findOne({ owner: id });
   if (!result) {
-    sendResponse({
+    return sendResponse({
       res,
       status: 404,
       statusMessage: "Not found",

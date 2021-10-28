@@ -15,7 +15,7 @@ const joiBookUpdateStatusSchema = Joi.object({
 const joiBookAddResumeSchema = Joi.object({
   resume: Joi.object({
     rating: Joi.number().min(0).max(5).required(),
-    text: Joi.string().min(1).required(),
+    text: Joi.string().allow(""),
   }),
 });
 

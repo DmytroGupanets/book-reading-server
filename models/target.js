@@ -6,6 +6,10 @@ const targetSchema = Schema(
     startDate: { type: String, required: [true, "StartDate is required"] },
     endDate: { type: String, required: [true, "EndDate is required"] },
     owner: { type: Schema.Types.ObjectId, ref: "user" },
+    isActive: {
+      type: Boolean,
+      default: false,
+    },
     books: [{ type: String }],
     records: [
       {
@@ -27,7 +31,7 @@ const joiTargetSchema = Joi.object({
 const joiRecordSchema = Joi.object({
   date: Joi.string().required(),
   time: Joi.string().required(),
-  pages: Joi.array().min(1).max(3).required(),
+  pages: Joi.string().min(1).max(3).required(),
 });
 
 const Target = model("target", targetSchema);

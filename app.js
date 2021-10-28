@@ -9,6 +9,10 @@ const usersRouter = require("./routes/api/users");
 const targetsRouter = require("./routes/api/targets");
 const booksRouter = require("./routes/api/books");
 
+// swagger
+const swaggerUI = require("swagger-ui-express");
+const swaggerDocument = require("./swagger.json");
+
 const { DB_HOST, PORT = 5000 } = process.env;
 
 mongoose
@@ -40,8 +44,11 @@ app.use("/api/users", usersRouter);
 app.use("/api/targets", targetsRouter);
 app.use("/api/books", booksRouter);
 
+// app use for swagger route
+app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(swaggerDocument));
+
 app.use((req, res) => {
-  sendResponse({
+  return sendResponse({
     res,
     status: 404,
     statusMessage: "Not Found",
