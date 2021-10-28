@@ -12,18 +12,11 @@
       "url": "https://opensource.org/licenses/MIT"
     }
   },
-  "consumes": [
-    "application/json"
-  ],
-  "produces": [
-    "application/json"
-  ],
+  "consumes": ["application/json"],
+  "produces": ["application/json"],
   "servers": [
     {
-      "url": "https://books-reading.herokuapp.com"
-    },
-    {
-      "url": "https://localhost:5000"
+      "url": "https://books-reading-server.herokuapp.com"
     }
   ],
   "tags": [
@@ -47,9 +40,7 @@
   "paths": {
     "/api/auth/google": {
       "get": {
-        "tags": [
-          "Auth"
-        ],
+        "tags": ["Auth"],
         "summary": "Google authentication",
         "responses": {
           "200": {
@@ -65,9 +56,7 @@
     },
     "/api/auth/register": {
       "post": {
-        "tags": [
-          "Auth"
-        ],
+        "tags": ["Auth"],
         "summary": "User registration",
         "parameters": [],
         "requestBody": {
@@ -105,9 +94,7 @@
     },
     "/api/auth/login": {
       "post": {
-        "tags": [
-          "Auth"
-        ],
+        "tags": ["Auth"],
         "summary": "User authentication",
         "parameters": [],
         "requestBody": {
@@ -145,9 +132,7 @@
     },
     "/api/auth/logout": {
       "post": {
-        "tags": [
-          "Auth"
-        ],
+        "tags": ["Auth"],
         "summary": "Logout",
         "security": [
           {
@@ -177,9 +162,7 @@
     },
     "/api/users/:id": {
       "get": {
-        "tags": [
-          "User"
-        ],
+        "tags": ["User"],
         "summary": "Get user info",
         "security": [
           {
@@ -215,9 +198,7 @@
     },
     "/api/users/current": {
       "get": {
-        "tags": [
-          "User"
-        ],
+        "tags": ["User"],
         "summary": "Get user info",
         "security": [
           {
@@ -253,9 +234,7 @@
     },
     "/api/users/verify/:verifyToken": {
       "get": {
-        "tags": [
-          "User"
-        ],
+        "tags": ["User"],
         "summary": "Verification status",
         "security": [
           {
@@ -291,9 +270,7 @@
     },
     "/api/users/verify": {
       "post": {
-        "tags": [
-          "User"
-        ],
+        "tags": ["User"],
         "summary": "Verification operation",
         "security": [
           {
@@ -325,9 +302,7 @@
     },
     "/api/books/": {
       "get": {
-        "tags": [
-          "Books"
-        ],
+        "tags": ["Books"],
         "summary": "Get all books",
         "security": [
           {
@@ -355,9 +330,7 @@
     },
     "/api/books/:id": {
       "get": {
-        "tags": [
-          "Books"
-        ],
+        "tags": ["Books"],
         "summary": "Get book by ID",
         "security": [
           {
@@ -385,9 +358,7 @@
     },
     "/api/bоoks/": {
       "post": {
-        "tags": [
-          "Books"
-        ],
+        "tags": ["Books"],
         "summary": "Add book",
         "security": [
           {
@@ -415,9 +386,7 @@
     },
     "/api/bоoks/status/:id": {
       "patch": {
-        "tags": [
-          "Books"
-        ],
+        "tags": ["Books"],
         "summary": "Update status",
         "security": [
           {
@@ -449,9 +418,7 @@
     },
     "/api/bоoks/resume/:id": {
       "put": {
-        "tags": [
-          "Books"
-        ],
+        "tags": ["Books"],
         "summary": "Add resume by id",
         "security": [
           {
@@ -483,9 +450,7 @@
     },
     "/api/targets/:id": {
       "get": {
-        "tags": [
-          "Targets"
-        ],
+        "tags": ["Targets"],
         "summary": "Get Target By Id",
         "security": [
           {
@@ -507,9 +472,7 @@
     },
     "/api/targets/completed/:id": {
       "get": {
-        "tags": [
-          "Targets"
-        ],
+        "tags": ["Targets"],
         "summary": "Reset Task",
         "security": [
           {
@@ -531,9 +494,7 @@
     },
     "/api/targets/": {
       "post": {
-        "tags": [
-          "Targets"
-        ],
+        "tags": ["Targets"],
         "summary": "Add targets",
         "security": [
           {
@@ -565,9 +526,7 @@
     },
     "/api/targets/records/:id": {
       "patch": {
-        "tags": [
-          "Targets"
-        ],
+        "tags": ["Targets"],
         "summary": "Update Records",
         "security": [
           {
@@ -597,11 +556,7 @@
   "components": {
     "schemas": {
       "RegistrationRequest": {
-        "required": [
-          "email",
-          "name",
-          "password"
-        ],
+        "required": ["email", "name", "password"],
         "type": "object",
         "properties": {
           "email": {
@@ -622,10 +577,7 @@
         }
       },
       "LoginRequest": {
-        "required": [
-          "email",
-          "password"
-        ],
+        "required": ["email", "password"],
         "type": "object",
         "properties": {
           "email": {
