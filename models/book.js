@@ -4,7 +4,7 @@ const { Schema, model } = require("mongoose");
 const joiBookSchema = Joi.object({
   name: Joi.string().min(1).required(),
   author: Joi.string().min(1).required(),
-  year: Joi.number().min(1).required(),
+  year: Joi.string().allow(""),
   pages: Joi.number().min(1).required(),
 });
 
@@ -32,10 +32,9 @@ const bookSchema = Schema(
       minLength: 2,
     },
     year: {
-      type: Number,
-      required: [true, "Set year for book"],
-      minLength: 4,
-      maxLength: 4,
+      type: String,
+      required: [false],
+      default: "",
     },
     pages: {
       type: Number,
